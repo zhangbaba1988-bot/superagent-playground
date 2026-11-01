@@ -1,0 +1,14 @@
+name: superagent-ping
+on:
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Post a test request for the superagent
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue comment 1 --repo "$GITHUB_REPOSITORY" --body '@zhangbaba1988-bot 帮我在仓库根目录加一个 hello.txt，内容 Hello Super-agent，然后提一个 PR'
